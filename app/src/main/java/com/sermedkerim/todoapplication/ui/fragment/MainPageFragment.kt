@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.sermedkerim.todoapplication.R
 import com.sermedkerim.todoapplication.data.entity.ToDo
 import com.sermedkerim.todoapplication.databinding.FragmentMainPageBinding
@@ -30,8 +31,8 @@ class MainPageFragment : Fragment() {
     ): View? {
         binding = FragmentMainPageBinding.inflate(LayoutInflater.from(requireContext()),container,false)
 
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
         viewModel.toDoList.observe(viewLifecycleOwner){
+            binding.recyclerView.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
             val adapter = ToDoAdapter(it,viewModel)
             binding.recyclerView.adapter = adapter
         }

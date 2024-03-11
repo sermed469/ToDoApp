@@ -29,6 +29,7 @@ class ToDoAdapter(var toDoList:List<ToDo>,var viewModel: MainPageViewModel) : Re
     override fun onBindViewHolder(holder: ToDoCardItemViewHolder, position: Int) {
         val toDo = toDoList.get(position)
 
+        holder.binding.textViewToDoNumberCardItem.text = "To Do #${position+1}"
         holder.binding.textViewCardItemName.text = toDo.name
         holder.binding.imageViewDelete.setOnClickListener {
             Snackbar.make(it,"Are you delete?",Snackbar.LENGTH_LONG)
